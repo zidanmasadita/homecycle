@@ -122,8 +122,7 @@ class QuickStatsCard extends StatelessWidget {
               Expanded(
                 child: Text(
                   title,
-                  style: AppTextStyles.bodyMedium.copyWith(
-                    fontWeight: FontWeight.w500,
+                  style: AppTextStyles.body2Medium.copyWith(
                     color: Colors.black87,
                   ),
                   maxLines: 1,
@@ -148,8 +147,7 @@ class QuickStatsCard extends StatelessWidget {
                   alignment: Alignment.centerLeft,
                   child: Text(
                     value,
-                    style: AppTextStyles.title.copyWith(
-                      fontWeight: FontWeight.bold,
+                    style: AppTextStyles.title3Bold.copyWith(
                       color: Colors.black,
                       height: 1.1,
                     ),
@@ -162,7 +160,7 @@ class QuickStatsCard extends StatelessWidget {
                   padding: const EdgeInsets.only(bottom: 2.0),
                   child: Text(
                     subtitle,
-                    style: AppTextStyles.label.copyWith(
+                    style: AppTextStyles.label1Medium.copyWith(
                       color: Colors.grey.shade800,
                     ),
                   ),

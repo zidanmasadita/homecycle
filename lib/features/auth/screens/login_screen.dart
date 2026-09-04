@@ -1,11 +1,12 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:homesikil/core/routes/slide_page_route.dart';
 import 'package:provider/provider.dart';
 import 'package:homesikil/core/constants/app_colors.dart';
 import 'package:homesikil/core/constants/app_assets.dart';
 import 'package:homesikil/core/constants/app_dimens.dart';
 import 'package:homesikil/core/theme/app_text_styles.dart';
-import 'package:homesikil/core/utils/app_snackbar.dart';
+import 'package:homesikil/core/utils/app_helpers.dart';
 import 'package:homesikil/core/utils/validators.dart';
 import 'package:homesikil/features/auth/provider/auth_provider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -77,7 +78,7 @@ class _LoginScreenState extends State<LoginScreen> {
         (_) => false,
       );
     } else {
-      AppSnackbar.showError(updated.errorMessage ?? 'Login failed');
+      AppHelpers.showError(updated.errorMessage ?? 'Login failed');
     }
   }
 
@@ -227,8 +228,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 const SizedBox(height: 20),
                                 Text(
                                   'auth.or_use_email'.tr(),
-                                  style: const TextStyle(
-                                    fontSize: 16,
+                                  style: AppTextStyles.body1Regular.copyWith(
                                     color: Colors.black87,
                                   ),
                                 ),
@@ -294,8 +294,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         ),
                                         Text(
                                           'auth.remember_me'.tr(),
-                                          style: const TextStyle(
-                                            fontSize: 14,
+                                          style: AppTextStyles.body2Regular.copyWith(
                                             color: Colors.black87,
                                           ),
                                         ),
@@ -307,10 +306,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                       },
                                       child: Text(
                                         'auth.forgot_password'.tr(),
-                                        style: const TextStyle(
-                                          fontSize: 14,
+                                        style: AppTextStyles.body2Bold.copyWith(
                                           color: AppColors.primary,
-                                          fontWeight: FontWeight.bold,
                                         ),
                                       ),
                                     ),
@@ -350,9 +347,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                               )
                                             : Text(
                                                 'auth.login_title'.tr(),
-                                                style: const TextStyle(
-                                                  fontSize: 22,
-                                                  fontWeight: FontWeight.bold,
+                                                style: AppTextStyles.title2Bold.copyWith(
                                                   color: Colors.white,
                                                 ),
                                               ),
@@ -369,21 +364,19 @@ class _LoginScreenState extends State<LoginScreen> {
                                   children: [
                                     Text(
                                       'auth.dont_have_account'.tr(),
-                                      style: const TextStyle(color: Colors.black87),
+                                      style: AppTextStyles.body1Regular.copyWith(color: Colors.black87),
                                     ),
                                     GestureDetector(
                                       onTap: () => Navigator.push(
                                         context,
-                                        MaterialPageRoute(
-                                          builder: (_) =>
-                                              const RegisterScreen(),
+                                        SlidePageRoute(
+                                          page: const RegisterScreen(),
                                         ),
                                       ),
                                       child: Text(
                                         'auth.register_link'.tr(),
-                                        style: const TextStyle(
+                                        style: AppTextStyles.body1Bold.copyWith(
                                           color: AppColors.primary,
-                                          fontWeight: FontWeight.bold,
                                         ),
                                       ),
                                     ),

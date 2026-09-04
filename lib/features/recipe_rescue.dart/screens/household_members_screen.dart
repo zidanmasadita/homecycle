@@ -3,7 +3,7 @@ import 'package:homesikil/core/constants/app_colors.dart';
 import 'package:homesikil/core/theme/app_text_styles.dart';
 import 'package:homesikil/core/constants/app_dimens.dart';
 import 'package:homesikil/core/constants/app_assets.dart';
-import 'package:homesikil/core/utils/app_snackbar.dart';
+import 'package:homesikil/core/utils/app_helpers.dart';
 import 'package:homesikil/features/auth/provider/auth_provider.dart';
 import 'package:homesikil/features/household/models/household_invitation_model.dart';
 import 'package:homesikil/features/household/provider/household_provider.dart';
@@ -111,9 +111,9 @@ class HouseholdMembersScreen extends StatelessWidget {
                     final success = await provider.acceptInvite(invite.id);
                     if (!context.mounted) return;
                     if (success) {
-                      AppSnackbar.showSuccess('profile.joined_success'.tr());
+                      AppHelpers.showSuccess('profile.joined_success'.tr());
                     } else {
-                      AppSnackbar.showError(
+                      AppHelpers.showError(
                         provider.errorMessage ?? 'Error',
                       );
                     }
@@ -183,9 +183,9 @@ class HouseholdMembersScreen extends StatelessWidget {
                 if (ctx.mounted) {
                   Navigator.pop(ctx);
                   if (success) {
-                    AppSnackbar.showSuccess('profile.invite_sent'.tr());
+                    AppHelpers.showSuccess('profile.invite_sent'.tr());
                   } else {
-                    AppSnackbar.showError(
+                    AppHelpers.showError(
                       provider.errorMessage ?? 'profile.invite_failed'.tr(),
                     );
                   }
@@ -219,9 +219,9 @@ class HouseholdMembersScreen extends StatelessWidget {
               final success = await provider.leaveHousehold();
               if (context.mounted) {
                 if (success) {
-                  AppSnackbar.showSuccess('profile.left_success'.tr());
+                  AppHelpers.showSuccess('profile.left_success'.tr());
                 } else {
-                  AppSnackbar.showError(
+                  AppHelpers.showError(
                     provider.errorMessage ?? 'profile.left_failed'.tr(),
                   );
                 }
@@ -259,10 +259,7 @@ class HouseholdMembersScreen extends StatelessWidget {
         ),
         title: Text(
           'profile.household_members'.tr(),
-          style: AppTextStyles.heading.copyWith(
-            fontSize: 22,
-            color: Colors.black87,
-          ),
+          style: AppTextStyles.title2Bold.copyWith(color: Colors.black87),
         ),
         centerTitle: true,
       ),
@@ -277,7 +274,7 @@ class HouseholdMembersScreen extends StatelessWidget {
                   if (invites.isNotEmpty) ...[
                     Text(
                       'profile.pending_invitations'.tr(),
-                      style: AppTextStyles.title.copyWith(fontSize: 18),
+                      style: AppTextStyles.title3SemiBold,
                     ),
                     const SizedBox(height: 12),
                     ...invites.map(

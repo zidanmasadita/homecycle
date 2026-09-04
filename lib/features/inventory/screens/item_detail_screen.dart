@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:homesikil/core/widgets/detail_row_widget.dart';
 import 'package:homesikil/core/constants/app_colors.dart';
 import 'package:homesikil/core/theme/app_text_styles.dart';
 import 'package:homesikil/core/constants/app_dimens.dart';
@@ -14,7 +15,7 @@ import 'package:homesikil/features/household/provider/household_provider.dart';
 import 'package:homesikil/features/gamification/widgets/achievement_unlocked_dialog.dart';
 import 'package:homesikil/features/inventory/widgets/food_image.dart';
 import 'package:homesikil/features/consumption/repository/consumption_repository.dart';
-import 'package:homesikil/core/utils/app_snackbar.dart';
+import 'package:homesikil/core/utils/app_helpers.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 class ItemDetailScreen extends StatefulWidget {
@@ -52,8 +53,8 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
         Navigator.pop(context);
       }
 
-      final actionText = action == 'consumed' ? 'inventory.consumed'.tr().toLowerCase() : 'inventory.wasted'.tr().toLowerCase();
-      AppSnackbar.showSuccess(
+
+      AppHelpers.showSuccess(
         action == 'consumed' 
           ? 'inventory.success_consumed'.tr(args: [currentItem.customName ?? category.name])
           : 'inventory.success_wasted'.tr(args: [currentItem.customName ?? category.name]),
@@ -219,7 +220,7 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
                           Expanded(
                             child: Text(
                               title,
-                              style: AppTextStyles.heading.copyWith(
+                              style: AppTextStyles.title1SemiBold.copyWith(
                                 fontSize: 26,
                               ),
                               overflow: TextOverflow.ellipsis,
@@ -238,30 +239,35 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
                       const SizedBox(height: 24),
 
                       // Detail Rows
-                      _buildDetailRow(
-                        Icons.category_outlined,
-                        'inventory.category'.tr(),
-                        categoryName,
+                      DetailRowWidget(
+                        icon: Icons.category_outlined,
+                        label: 'inventory.category'.tr(),
+                        value: categoryName,
+                        padding: const EdgeInsets.only(bottom: 20.0),
                       ),
-                      _buildDetailRow(
-                        Icons.calendar_today_outlined,
-                        'inventory.purchase_date'.tr(),
-                        formatter.format(item.createdAt),
+                      DetailRowWidget(
+                        icon: Icons.calendar_today_outlined,
+                        label: 'inventory.purchase_date'.tr(),
+                        value: formatter.format(item.createdAt),
+                        padding: const EdgeInsets.only(bottom: 20.0),
                       ),
-                      _buildDetailRow(
-                        Icons.event_busy_outlined,
-                        'inventory.expiry_date'.tr(),
-                        formatter.format(item.estimatedExpiredDate),
+                      DetailRowWidget(
+                        icon: Icons.event_busy_outlined,
+                        label: 'inventory.expiry_date'.tr(),
+                        value: formatter.format(item.estimatedExpiredDate),
+                        padding: const EdgeInsets.only(bottom: 20.0),
                       ),
-                      _buildDetailRow(
-                        Icons.shopping_bag_outlined,
-                        'inventory.quantity'.tr(),
-                        '${item.quantity.toStringAsFixed(0)} ${item.unit}',
+                      DetailRowWidget(
+                        icon: Icons.shopping_bag_outlined,
+                        label: 'inventory.quantity'.tr(),
+                        value: '${item.quantity.toStringAsFixed(0)} ${item.unit}',
+                        padding: const EdgeInsets.only(bottom: 20.0),
                       ),
-                      _buildDetailRow(
-                        Icons.kitchen_outlined,
-                        'inventory.storage'.tr(),
-                        formatStorageLocation(item.storageLocation),
+                      DetailRowWidget(
+                        icon: Icons.kitchen_outlined,
+                        label: 'inventory.storage'.tr(),
+                        value: formatStorageLocation(item.storageLocation),
+                        padding: const EdgeInsets.only(bottom: 20.0),
                       ),
                     ],
                   ),
@@ -298,10 +304,8 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
                               )
                             : Text(
                                 'inventory.consumed'.tr(),
-                                style: const TextStyle(
+                                style: AppTextStyles.body1Bold.copyWith(
                                   color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
                                 ),
                               ),
                         ),
@@ -332,10 +336,8 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
                               )
                             : Text(
                                 'inventory.wasted'.tr(),
-                                style: const TextStyle(
+                                style: AppTextStyles.body1Bold.copyWith(
                                   color: Colors.redAccent,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
                                 ),
                               ),
                         ),
@@ -352,28 +354,4 @@ class _ItemDetailScreenState extends State<ItemDetailScreen> {
     );
   }
 
-  Widget _buildDetailRow(IconData icon, String label, String value) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 20.0),
-      child: Row(
-        children: [
-          Icon(icon, color: Colors.black54, size: 24),
-          const SizedBox(width: 16),
-          Text(
-            label,
-            style: const TextStyle(
-              fontSize: 16,
-              color: Colors.black87,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-          const Spacer(),
-          Text(
-            value,
-            style: const TextStyle(fontSize: 16, color: Colors.black54),
-          ),
-        ],
-      ),
-    );
-  }
 }

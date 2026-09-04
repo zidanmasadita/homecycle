@@ -57,7 +57,7 @@ class ImpactCardWidget extends StatelessWidget {
                 const SizedBox(width: 12),
                 Text(
                   title,
-                  style: AppTextStyles.title.copyWith(fontSize: 16),
+                  style: AppTextStyles.body1SemiBold,
                 ),
               ],
             ],
@@ -66,14 +66,13 @@ class ImpactCardWidget extends StatelessWidget {
             const SizedBox(height: 12),
             Text(
               title,
-              style: AppTextStyles.title.copyWith(fontSize: 14),
+              style: AppTextStyles.body2SemiBold,
             ),
           ],
           SizedBox(height: isCompact ? 8 : 16),
           Text(
             amount,
-            style: AppTextStyles.heading.copyWith(
-              fontSize: isCompact ? 24 : 32,
+            style: (isCompact ? AppTextStyles.title2Bold : AppTextStyles.title1Bold).copyWith(
               color: AppColors.primary,
             ),
           ),

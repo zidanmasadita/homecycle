@@ -44,7 +44,7 @@ class AchievementBadge extends StatelessWidget {
                 const SizedBox(height: 24),
                 Text(
                   achievement.title,
-                  style: AppTextStyles.heading.copyWith(fontSize: 20),
+                  style: AppTextStyles.title3Bold,
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 8),
@@ -69,9 +69,8 @@ class AchievementBadge extends StatelessWidget {
                     ),
                     child: Text(
                       'Unlocked on ${achievement.achievedAt!.day}/${achievement.achievedAt!.month}/${achievement.achievedAt!.year}',
-                      style: AppTextStyles.title.copyWith(
+                      style: AppTextStyles.body2SemiBold.copyWith(
                         color: AppColors.primary,
-                        fontSize: 14,
                       ),
                     ),
                   )
@@ -87,9 +86,8 @@ class AchievementBadge extends StatelessWidget {
                     ),
                     child: Text(
                       'Locked',
-                      style: AppTextStyles.title.copyWith(
+                      style: AppTextStyles.body2SemiBold.copyWith(
                         color: Colors.grey.shade500,
-                        fontSize: 14,
                       ),
                     ),
                   ),
@@ -105,12 +103,9 @@ class AchievementBadge extends StatelessWidget {
                         borderRadius: BorderRadius.circular(12),
                       ),
                     ),
-                    child: const Text(
+                    child: Text(
                       'Close',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style: AppTextStyles.body1Bold.copyWith(color: Colors.white),
                     ),
                   ),
                 ),
@@ -161,11 +156,8 @@ class AchievementBadge extends StatelessWidget {
           const SizedBox(height: 8),
           Text(
             achievement.title,
-            style: AppTextStyles.title.copyWith(
-              fontSize: 12,
-              color: achievement.isUnlocked
-                  ? Colors.black87
-                  : Colors.grey.shade500,
+            style: AppTextStyles.label1SemiBold.copyWith(
+              color: achievement.isUnlocked ? Colors.black87 : Colors.grey.shade500,
             ),
             textAlign: TextAlign.center,
             maxLines: 2,

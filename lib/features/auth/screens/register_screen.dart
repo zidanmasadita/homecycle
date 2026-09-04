@@ -1,11 +1,12 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:homesikil/core/routes/slide_page_route.dart';
 import 'package:provider/provider.dart';
 import 'package:homesikil/core/constants/app_colors.dart';
 import 'package:homesikil/core/constants/app_assets.dart';
 import 'package:homesikil/core/constants/app_dimens.dart';
 import 'package:homesikil/core/theme/app_text_styles.dart';
-import 'package:homesikil/core/utils/app_snackbar.dart';
+import 'package:homesikil/core/utils/app_helpers.dart';
 import 'package:homesikil/core/utils/validators.dart';
 import 'package:homesikil/features/auth/provider/auth_provider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -77,13 +78,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
     final updated = context.read<AuthProvider>();
     if (updated.status == AuthStatus.success) {
       if (updated.currentUser == null) {
-        AppSnackbar.showSuccess('Registrasi berhasil! Silakan cek email Anda untuk verifikasi.');
+        AppHelpers.showSuccess('Registrasi berhasil! Silakan cek email Anda untuk verifikasi.');
         Navigator.pop(context);
       } else {
         Navigator.pushNamedAndRemoveUntil(context, AppRoutes.splash, (_) => false);
       }
     } else {
-      AppSnackbar.showError(updated.errorMessage ?? 'Registration failed');
+      AppHelpers.showError(updated.errorMessage ?? 'Registration failed');
     }
   }
 
@@ -220,7 +221,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 const SizedBox(height: 12),
                                 Text(
                                   'auth.or_use_email'.tr(),
-                                  style: const TextStyle(fontSize: 14, color: Colors.black87),
+                                  style: AppTextStyles.body2Regular.copyWith(color: Colors.black87),
                                 ),
                                 const SizedBox(height: 12),
 
@@ -271,7 +272,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     padding: const EdgeInsets.only(left: 14, top: 6, bottom: 4),
                                       child: Text(
                                         'auth.password_policy'.tr(),
-                                        style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
+                                        style: AppTextStyles.label1Regular.copyWith(color: Colors.grey.shade600),
                                       ),
                                   ),
                                   secondChild: const SizedBox(width: double.infinity),
@@ -320,19 +321,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                       Text(
-                                        'auth.already_have_account'.tr(),
-                                        style: const TextStyle(color: Colors.black87),
-                                      ),
+                                       'auth.already_have_account'.tr(),
+                                       style: AppTextStyles.body1Regular.copyWith(color: Colors.black87),
+                                     ),
                                     GestureDetector(
                                       onTap: () => Navigator.push(
                                         context,
-                                        MaterialPageRoute(builder: (_) => const LoginScreen()),
+                                        SlidePageRoute(page: const LoginScreen()),
                                       ),
                                       child: Text(
                                         'auth.login_link'.tr(),
-                                        style: const TextStyle(
+                                        style: AppTextStyles.body1Bold.copyWith(
                                           color: AppColors.primary,
-                                          fontWeight: FontWeight.bold,
                                           decoration: TextDecoration.underline,
                                         ),
                                       ),

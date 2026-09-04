@@ -84,10 +84,7 @@ class _LanguageSettingsScreenState extends State<LanguageSettingsScreen> {
         ),
         title: Text(
           'profile.language'.tr(),
-          style: AppTextStyles.heading.copyWith(
-            fontSize: 22,
-            color: Colors.black87,
-          ),
+          style: AppTextStyles.title2Bold.copyWith(color: Colors.black87),
         ),
         centerTitle: true,
       ),
@@ -98,10 +95,7 @@ class _LanguageSettingsScreenState extends State<LanguageSettingsScreen> {
           children: [
             Text(
               'profile.select_language'.tr(),
-              style: AppTextStyles.heading.copyWith(
-                fontSize: 18,
-                color: Colors.black87,
-              ),
+              style: AppTextStyles.title3Bold.copyWith(color: Colors.black87),
             ),
             const SizedBox(height: 16),
             ...languages.map((lang) => _buildLanguageCard(lang['name']!, lang['code']!)),

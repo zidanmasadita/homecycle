@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:homesikil/features/inventory/models/food_item_model.dart';
 import 'package:homesikil/features/category/models/category_model.dart';
 import 'package:homesikil/core/constants/app_colors.dart';
+import 'package:homesikil/core/theme/app_text_styles.dart';
 
 class FoodImage extends StatelessWidget {
   final FoodItemModel item;
@@ -80,9 +81,8 @@ class FoodImage extends StatelessWidget {
       child: Center(
         child: Text(
           initial,
-          style: TextStyle(
+          style: AppTextStyles.body1Bold.copyWith(
             fontSize: width * 0.4,
-            fontWeight: FontWeight.bold,
             color: AppColors.primary,
           ),
         ),

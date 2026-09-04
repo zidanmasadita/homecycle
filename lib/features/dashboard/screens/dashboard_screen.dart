@@ -65,9 +65,7 @@ class DashboardScreen extends StatelessWidget {
                         const SizedBox(width: 8),
                         Text(
                           'HomeCycle',
-                          style: AppTextStyles.heading.copyWith(
-                            fontSize: 26,
-                            fontWeight: FontWeight.w900,
+                          style: AppTextStyles.title1Bold.copyWith(
                             color: AppColors.primary,
                           ),
                         ),
@@ -130,16 +128,14 @@ class DashboardScreen extends StatelessWidget {
                           children: [
                             Text(
                               'dashboard.hello'.tr(),
-                              style: AppTextStyles.displayLarge.copyWith(
-                                fontSize: 32,
+                              style: AppTextStyles.title1Bold.copyWith(
                                 color: Colors.black87,
                                 height: 1.1,
                               ),
                             ),
                             Text(
                               username,
-                              style: AppTextStyles.title.copyWith(
-                                fontSize: 28,
+                              style: AppTextStyles.title1SemiBold.copyWith(
                                 color: AppColors.primary,
                                 height: 1.2,
                               ),
@@ -147,7 +143,7 @@ class DashboardScreen extends StatelessWidget {
                             const SizedBox(height: 8),
                             Text(
                               'dashboard.subtitle'.tr(),
-                              style: AppTextStyles.bodyLarge.copyWith(
+                              style: AppTextStyles.body1Regular.copyWith(
                                 color: Colors.grey.shade800,
                               ),
                             ),
@@ -207,7 +203,7 @@ class DashboardScreen extends StatelessWidget {
                   children: [
                     Text(
                       'dashboard.expiring_soon'.tr(),
-                      style: AppTextStyles.title.copyWith(color: Colors.black),
+                      style: AppTextStyles.title3SemiBold.copyWith(color: Colors.black),
                     ),
                     GestureDetector(
                       onTap: () {
@@ -219,8 +215,7 @@ class DashboardScreen extends StatelessWidget {
                       },
                       child: Text(
                         'dashboard.see_all'.tr(),
-                        style: AppTextStyles.bodyLarge.copyWith(
-                          fontWeight: FontWeight.bold,
+                        style: AppTextStyles.body1Bold.copyWith(
                           color: AppColors.primary,
                         ),
                       ),
@@ -237,7 +232,7 @@ class DashboardScreen extends StatelessWidget {
                         padding: const EdgeInsets.all(20.0),
                         child: Text(
                           'dashboard.nothing_expiring'.tr(),
-                          style: const TextStyle(color: Colors.grey),
+                          style: AppTextStyles.body1Regular.copyWith(color: Colors.grey),
                         ),
                       )
                     : Column(

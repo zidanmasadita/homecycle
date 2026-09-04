@@ -35,6 +35,7 @@ import 'features/profile/provider/profile_provider.dart';
 import 'features/household/provider/household_provider.dart';
 
 import 'package:homesikil/core/utils/app_snackbar.dart';
+import 'package:homesikil/core/utils/custom_response.dart';
 
 @pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
@@ -128,6 +129,7 @@ class HomeCycleApp extends StatelessWidget {
           return MaterialApp(
             title: 'HomeCycle',
             debugShowCheckedModeBanner: false,
+            navigatorKey: CustomResponse.navigatorKey,
             scaffoldMessengerKey: AppSnackbar.messengerKey,
             localizationsDelegates: context.localizationDelegates,
             supportedLocales: context.supportedLocales,

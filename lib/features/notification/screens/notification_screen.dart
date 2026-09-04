@@ -21,10 +21,7 @@ class NotificationScreen extends StatelessWidget {
         ),
         title: Text(
           'Notifications',
-          style: AppTextStyles.heading.copyWith(
-            fontSize: 22,
-            color: Colors.black87,
-          ),
+          style: AppTextStyles.title2Bold.copyWith(color: Colors.black87),
         ),
         centerTitle: true,
       ),
@@ -47,10 +44,10 @@ class NotificationScreen extends StatelessWidget {
                 children: [
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.5,
-                    child: const Center(
+                    child: Center(
                       child: Text(
                         'No notifications right now.',
-                        style: TextStyle(color: Colors.grey),
+                        style: AppTextStyles.body1Regular.copyWith(color: Colors.grey),
                       ),
                     ),
                   ),
@@ -72,10 +69,7 @@ class NotificationScreen extends StatelessWidget {
                 if (todayNotifications.isNotEmpty) ...[
                   Text(
                     'Today',
-                    style: AppTextStyles.heading.copyWith(
-                      fontSize: 18,
-                      color: Colors.black87,
-                    ),
+                    style: AppTextStyles.title3Bold.copyWith(color: Colors.black87),
                   ),
                   const SizedBox(height: 16),
                   ...todayNotifications.map((notification) {
@@ -89,10 +83,7 @@ class NotificationScreen extends StatelessWidget {
                 if (earlierNotifications.isNotEmpty) ...[
                   Text(
                     'Earlier',
-                    style: AppTextStyles.heading.copyWith(
-                      fontSize: 18,
-                      color: Colors.black87,
-                    ),
+                    style: AppTextStyles.title3Bold.copyWith(color: Colors.black87),
                   ),
                   const SizedBox(height: 16),
                   ...earlierNotifications.map((notification) {

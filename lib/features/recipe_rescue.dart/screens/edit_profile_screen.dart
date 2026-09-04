@@ -3,6 +3,7 @@ import 'package:homesikil/core/constants/app_colors.dart';
 import 'package:homesikil/core/theme/app_text_styles.dart';
 import 'package:homesikil/core/constants/app_dimens.dart';
 import 'package:homesikil/core/constants/app_assets.dart';
+import 'package:homesikil/core/utils/app_helpers.dart';
 import 'package:homesikil/features/recipe_rescue.dart/widgets/profile_text_field.dart';
 import 'package:provider/provider.dart';
 import 'package:homesikil/features/auth/provider/auth_provider.dart';
@@ -60,15 +61,11 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     setState(() => _isLoading = false);
     
     if (success) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('profile.update_success'.tr())),
-      );
+      AppHelpers.showSuccess('profile.update_success'.tr());
       Navigator.pop(context);
     } else {
       final error = context.read<AuthProvider>().errorMessage;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(error ?? 'profile.update_failed'.tr())),
-      );
+      AppHelpers.showError(error ?? 'profile.update_failed'.tr());
     }
   }
 
@@ -88,21 +85,15 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         setState(() => _isUploadingPic = false);
 
         if (success) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Profile picture updated successfully!')),
-          );
+          AppHelpers.showSuccess('Profile picture updated successfully!');
         } else {
           final error = context.read<AuthProvider>().errorMessage;
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(error ?? 'Failed to update profile picture')),
-          );
+          AppHelpers.showError(error ?? 'Failed to update profile picture');
         }
       }
     } catch (e) {
       if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error: $e. You might need to restart the app completely (stop and rerun) if you just added the plugin.')),
-      );
+      AppHelpers.showError('Error: $e');
     }
   }
 

@@ -21,10 +21,7 @@ class AboutScreen extends StatelessWidget {
         ),
         title: Text(
           'profile.about'.tr(),
-          style: AppTextStyles.heading.copyWith(
-            fontSize: 22,
-            color: Colors.black87,
-          ),
+          style: AppTextStyles.title2Bold.copyWith(color: Colors.black87),
         ),
         centerTitle: true,
       ),
@@ -49,7 +46,7 @@ class AboutScreen extends StatelessWidget {
             const SizedBox(height: 24),
             Text(
               'HomeCycle',
-              style: AppTextStyles.heading.copyWith(fontSize: 28),
+              style: AppTextStyles.title1Bold,
             ),
             const SizedBox(height: 8),
             Text(
@@ -59,7 +56,7 @@ class AboutScreen extends StatelessWidget {
             const SizedBox(height: 40),
             Text(
               'profile.our_mission'.tr(),
-              style: AppTextStyles.heading.copyWith(fontSize: 18),
+              style: AppTextStyles.title3Bold,
             ),
             const SizedBox(height: 12),
             Text(

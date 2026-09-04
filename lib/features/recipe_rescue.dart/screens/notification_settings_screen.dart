@@ -98,10 +98,7 @@ class _NotificationSettingsScreenState
         ),
         title: Text(
           'profile.notification_settings'.tr(),
-          style: AppTextStyles.heading.copyWith(
-            fontSize: 22,
-            color: Colors.black87,
-          ),
+          style: AppTextStyles.title2Bold.copyWith(color: Colors.black87),
         ),
         centerTitle: true,
       ),

@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:homesikil/core/constants/app_colors.dart';
 import 'package:homesikil/core/constants/app_dimens.dart';
 import 'package:homesikil/core/theme/app_text_styles.dart';
-import 'package:homesikil/core/utils/app_snackbar.dart';
+import 'package:homesikil/core/utils/app_helpers.dart';
 import 'package:homesikil/core/utils/validators.dart';
 import 'package:homesikil/features/auth/provider/auth_provider.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -36,12 +36,12 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
 
       if (mounted) {
         if (success) {
-          AppSnackbar.showSuccess(
+          AppHelpers.showSuccess(
             'Password reset link sent to ${_emailController.text}. Please check your email.',
           );
           Navigator.pop(context);
         } else {
-          AppSnackbar.showError(
+          AppHelpers.showError(
             provider.errorMessage ?? 'Failed to send reset link',
           );
         }
@@ -64,25 +64,22 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
         keyboardType: keyboardType,
         autofillHints: autofillHints,
         validator: validator,
-        style: const TextStyle(fontSize: 16),
+        style: AppTextStyles.body1Regular,
         decoration: InputDecoration(
           hintText: hint,
-          hintStyle: TextStyle(
+          hintStyle: AppTextStyles.body1Regular.copyWith(
             color: Colors.grey.shade400,
-            fontSize: 16,
           ),
           prefixIcon: Icon(icon, color: AppColors.primary),
           contentPadding: const EdgeInsets.symmetric(
             horizontal: 20,
             vertical: 16,
           ),
-          errorStyle: const TextStyle(
+          errorStyle: AppTextStyles.label1Regular.copyWith(
             color: Colors.redAccent,
-            fontSize: 12,
             height: 1.2,
           ),
-          helperText: ' ',
-          helperStyle: const TextStyle(fontSize: 12, height: 1.2),
+          helperStyle: AppTextStyles.label1Regular.copyWith(height: 1.2),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(AppDimens.radiusLarge),
             borderSide: BorderSide(color: AppColors.border, width: 1),
@@ -232,9 +229,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                                       )
                                     : Text(
                                         'auth.send_reset_link'.tr(),
-                                        style: const TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold,
+                                        style: AppTextStyles.title3Bold.copyWith(
                                           color: Colors.white,
                                         ),
                                       ),

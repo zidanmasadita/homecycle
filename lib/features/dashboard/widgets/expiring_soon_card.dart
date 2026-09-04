@@ -63,18 +63,13 @@ class ExpiringSoonCard extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: AppTextStyles.title.copyWith(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black87,
-                  ),
+                  style: AppTextStyles.title3Bold.copyWith(color: Colors.black87),
                 ),
                 const SizedBox(height: 4),
                 Text(
                   daysLeft,
-                  style: AppTextStyles.bodyMedium.copyWith(
+                  style: AppTextStyles.body2Medium.copyWith(
                     color: Colors.grey.shade500,
-                    fontWeight: FontWeight.w500,
                   ),
                 ),
               ],
@@ -90,9 +85,8 @@ class ExpiringSoonCard extends StatelessWidget {
             ),
             child: Text(
               badgeText,
-              style: AppTextStyles.label.copyWith(
+              style: AppTextStyles.label1Bold.copyWith(
                 color: Colors.black87,
-                fontWeight: FontWeight.bold,
               ),
             ),
           ),

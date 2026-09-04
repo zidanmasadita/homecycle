@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:homesikil/core/routes/slide_page_route.dart';
 import 'package:homesikil/routes/app_routes.dart';
 import 'package:homesikil/features/auth/screens/login_screen.dart';
 import 'package:homesikil/features/auth/screens/register_screen.dart';
@@ -27,59 +28,60 @@ class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case AppRoutes.splash:
-        return MaterialPageRoute(builder: (_) => const SplashScreen());
+        return SlidePageRouteFactory.withSettings(settings: settings, page: const SplashScreen());
       case AppRoutes.login:
-        return MaterialPageRoute(builder: (_) => const LoginScreen());
+        return SlidePageRouteFactory.withSettings(settings: settings, page: const LoginScreen());
       case AppRoutes.register:
-        return MaterialPageRoute(builder: (_) => const RegisterScreen());
+        return SlidePageRouteFactory.withSettings(settings: settings, page: const RegisterScreen());
       case AppRoutes.forgotPassword:
-        return MaterialPageRoute(builder: (_) => const ForgotPasswordScreen());
+        return SlidePageRouteFactory.withSettings(settings: settings, page: const ForgotPasswordScreen());
       case AppRoutes.onboarding:
-        return MaterialPageRoute(builder: (_) => const OnboardingScreen());
+        return SlidePageRouteFactory.withSettings(settings: settings, page: const OnboardingScreen());
       case AppRoutes.dashboard:
         final int index = (settings.arguments as Map<String, dynamic>?)?['index'] as int? ?? 0;
-        return MaterialPageRoute(builder: (_) => MainWrapper(initialIndex: index));
+        return SlidePageRouteFactory.withSettings(settings: settings, page: MainWrapper(initialIndex: index));
       case AppRoutes.inventory:
-        return MaterialPageRoute(builder: (_) => const InventoryScreen());
+        return SlidePageRouteFactory.withSettings(settings: settings, page: const InventoryScreen());
       case AppRoutes.itemDetail:
         final item = settings.arguments as FoodItemModel;
-        return MaterialPageRoute(builder: (_) => ItemDetailScreen(item: item));
+        return SlidePageRouteFactory.withSettings(settings: settings, page: ItemDetailScreen(item: item));
       case AppRoutes.addEditItem:
-        return MaterialPageRoute(builder: (_) => const AddEditItemScreen());
+        return SlidePageRouteFactory.withSettings(settings: settings, page: const AddEditItemScreen());
       case AppRoutes.scan:
-        return MaterialPageRoute(builder: (_) => const ScanScreen());
+        return SlidePageRouteFactory.withSettings(settings: settings, page: const ScanScreen());
       case AppRoutes.scanResult:
-        return MaterialPageRoute(builder: (_) => const ScanResultScreen());
+        return SlidePageRouteFactory.withSettings(settings: settings, page: const ScanResultScreen());
       case AppRoutes.notification:
-        return MaterialPageRoute(builder: (_) => const NotificationScreen());
+        return SlidePageRouteFactory.withSettings(settings: settings, page: const NotificationScreen());
       case AppRoutes.impactDashboard:
-        return MaterialPageRoute(builder: (_) => const ImpactDashboardScreen());
+        return SlidePageRouteFactory.withSettings(settings: settings, page: const ImpactDashboardScreen());
       case AppRoutes.profile:
-        return MaterialPageRoute(builder: (_) => const ProfileScreen());
+        return SlidePageRouteFactory.withSettings(settings: settings, page: const ProfileScreen());
       case AppRoutes.settings:
-        return MaterialPageRoute(builder: (_) => const SettingsScreen());
+        return SlidePageRouteFactory.withSettings(settings: settings, page: const SettingsScreen());
       case AppRoutes.languageSettings:
-        return MaterialPageRoute(builder: (_) => const LanguageSettingsScreen());
+        return SlidePageRouteFactory.withSettings(settings: settings, page: const LanguageSettingsScreen());
       case AppRoutes.notificationSettings:
-        return MaterialPageRoute(builder: (_) => const NotificationSettingsScreen());
+        return SlidePageRouteFactory.withSettings(settings: settings, page: const NotificationSettingsScreen());
       case AppRoutes.householdMembers:
-        return MaterialPageRoute(builder: (_) => const HouseholdMembersScreen());
+        return SlidePageRouteFactory.withSettings(settings: settings, page: const HouseholdMembersScreen());
       case AppRoutes.helpSupport:
-        return MaterialPageRoute(builder: (_) => const HelpSupportScreen());
+        return SlidePageRouteFactory.withSettings(settings: settings, page: const HelpSupportScreen());
       case AppRoutes.about:
-        return MaterialPageRoute(builder: (_) => const AboutScreen());
+        return SlidePageRouteFactory.withSettings(settings: settings, page: const AboutScreen());
       case AppRoutes.editProfile:
-        return MaterialPageRoute(builder: (_) => const EditProfileScreen());
+        return SlidePageRouteFactory.withSettings(settings: settings, page: const EditProfileScreen());
       default:
         // Supabase OAuth callback route
         if (settings.name != null && settings.name!.contains('login-callback')) {
-          return MaterialPageRoute(
-            builder: (_) => const Scaffold(
+          return SlidePageRouteFactory.withSettings(
+            settings: settings,
+            page: const Scaffold(
               body: Center(child: CircularProgressIndicator()),
             ),
           );
         }
-        return MaterialPageRoute(builder: (_) => const SplashScreen());
+        return SlidePageRouteFactory.withSettings(settings: settings, page: const SplashScreen());
     }
   }
 }

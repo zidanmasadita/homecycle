@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:homesikil/core/constants/app_colors.dart';
+import 'package:homesikil/core/theme/app_text_styles.dart';
 
 class CategoryFilterChip extends StatelessWidget {
   final String label;
@@ -30,7 +31,7 @@ class CategoryFilterChip extends StatelessWidget {
         child: Center(
           child: Text(
             label,
-            style: TextStyle(
+            style: AppTextStyles.body2Regular.copyWith(
               color: isSelected ? Colors.white : Colors.black87,
               fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
             ),

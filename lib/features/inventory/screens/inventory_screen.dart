@@ -59,9 +59,8 @@ class _InventoryScreenState extends State<InventoryScreen> {
                 children: [
                     Text(
                       'inventory.my_inventory'.tr(),
-                      style: AppTextStyles.heading.copyWith(
+                      style: AppTextStyles.title1Bold.copyWith(
                       color: AppColors.primary,
-                      fontSize: 28,
                     ),
                   ),
                 ],

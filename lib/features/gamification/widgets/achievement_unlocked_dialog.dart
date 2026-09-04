@@ -50,10 +50,7 @@ class AchievementUnlockedDialog extends StatelessWidget {
             const SizedBox(height: 16),
             Text(
               'New Achievement Unlocked!',
-              style: AppTextStyles.heading.copyWith(
-                fontSize: 20,
-                color: AppColors.primary,
-              ),
+              style: AppTextStyles.title3Bold.copyWith(color: AppColors.primary),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 16),
@@ -70,12 +67,9 @@ class AchievementUnlockedDialog extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12),
                   ),
                 ),
-                child: const Text(
+                child: Text(
                   'Awesome!',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: AppTextStyles.body1Bold.copyWith(color: Colors.white),
                 ),
               ),
             ),

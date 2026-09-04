@@ -40,9 +40,8 @@ class StreakWidget extends StatelessWidget {
             children: [
               Text(
                 label,
-                style: AppTextStyles.title.copyWith(
+                style: AppTextStyles.title3SemiBold.copyWith(
                   color: Colors.grey.shade800,
-                  fontSize: 18,
                 ),
               ),
               Row(
@@ -55,8 +54,7 @@ class StreakWidget extends StatelessWidget {
                   const SizedBox(width: 8),
                   Text(
                     '$streakNumber',
-                    style: AppTextStyles.heading.copyWith(
-                      fontSize: 32,
+                    style: AppTextStyles.title1Bold.copyWith(
                       color: Colors.black87,
                       height: 1.0,
                     ),

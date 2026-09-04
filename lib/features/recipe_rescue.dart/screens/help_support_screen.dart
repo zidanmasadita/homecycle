@@ -68,10 +68,7 @@ class HelpSupportScreen extends StatelessWidget {
         ),
         title: Text(
           'profile.help_support'.tr(),
-          style: AppTextStyles.heading.copyWith(
-            fontSize: 22,
-            color: Colors.black87,
-          ),
+          style: AppTextStyles.title2Bold.copyWith(color: Colors.black87),
         ),
         centerTitle: true,
       ),
@@ -82,7 +79,7 @@ class HelpSupportScreen extends StatelessWidget {
           children: [
             Text(
               'profile.contact_us'.tr(),
-              style: AppTextStyles.heading.copyWith(fontSize: 18),
+              style: AppTextStyles.title3Bold,
             ),
             const SizedBox(height: 16),
             Container(
@@ -119,7 +116,7 @@ class HelpSupportScreen extends StatelessWidget {
             const SizedBox(height: 24),
             Text(
               'profile.faq'.tr(),
-              style: AppTextStyles.heading.copyWith(fontSize: 18),
+              style: AppTextStyles.title3Bold,
             ),
             const SizedBox(height: 16),
             _buildFaqItem(

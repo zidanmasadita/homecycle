@@ -141,22 +141,23 @@ graph TD
     GuestUser --> UC3
 
     AuthUser --> UC4
-    UC4 --> UC5
-    UC5 --> UC6
-    UC5 --> UC7
+    UC4 -.->|<<include>>| UC5
+    UC6 -.->|<<extend>>| UC5
+    UC7 -.->|<<extend>>| UC5
 
     AuthUser --> UC8
-    UC8 --> UC9
-    UC8 --> UC10
-    UC10 --> UC11
-    UC10 --> UC12
-    UC10 --> UC13
+    UC9 -.->|<<extend>>| UC8
+    UC10 -.->|<<extend>>| UC8
+    UC11 -.->|<<extend>>| UC10
+    UC12 -.->|<<extend>>| UC10
+    UC13 -.->|<<extend>>| UC10
 
     AuthUser --> UC14
-    UC14 --> UC15
-    UC14 --> UC16
+    UC14 -.->|<<include>>| UC15
+    UC16 -.->|<<extend>>| UC14
 
     AuthUser --> UC17
+    UC18 -.->|<<extend>>| UC17
     System --> UC18
 
     AuthUser --> UC19

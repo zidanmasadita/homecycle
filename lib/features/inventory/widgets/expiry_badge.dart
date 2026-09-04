@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:homesikil/core/theme/app_text_styles.dart';
 
 class ExpiryBadge extends StatelessWidget {
   final String status;
@@ -29,9 +30,8 @@ class ExpiryBadge extends StatelessWidget {
       ),
       child: Text(
         status,
-        style: TextStyle(
+        style: AppTextStyles.label1Bold.copyWith(
           color: textColor,
-          fontWeight: FontWeight.bold,
           fontSize: fontSize,
         ),
       ),

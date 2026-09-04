@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:homesikil/core/constants/app_colors.dart';
+import 'package:homesikil/core/theme/app_text_styles.dart';
 import 'package:homesikil/routes/app_routes.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -69,17 +70,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       children: [
                         Text(
                           data['title1']!,
-                          style: const TextStyle(
-                            fontSize: 28,
-                            fontWeight: FontWeight.bold,
+                          style: AppTextStyles.title1Bold.copyWith(
                             color: Colors.black87,
                           ),
                         ),
                         Text(
                           data['title2']!,
-                          style: const TextStyle(
-                            fontSize: 28,
-                            fontWeight: FontWeight.bold,
+                          style: AppTextStyles.title1Bold.copyWith(
                             color: AppColors.primary,
                           ),
                         ),
@@ -87,8 +84,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         Text(
                           data['subtitle']!,
                           textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            fontSize: 16,
+                          style: AppTextStyles.body1Regular.copyWith(
                             color: Colors.black54,
                             height: 1.5,
                           ),
@@ -168,9 +164,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     _currentIndex == _onboardingData.length - 1
                         ? 'onboarding.get_started'.tr()
                         : 'onboarding.next'.tr(),
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
+                    style: AppTextStyles.title3Bold.copyWith(
                       color: Colors.white,
                     ),
                   ),
@@ -184,10 +178,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               onPressed: _completeOnboarding,
               child: Text(
                 'onboarding.skip'.tr(),
-                style: const TextStyle(
-                  fontSize: 16,
+                style: AppTextStyles.body1SemiBold.copyWith(
                   color: Colors.grey,
-                  fontWeight: FontWeight.w600,
                 ),
               ),
             ),

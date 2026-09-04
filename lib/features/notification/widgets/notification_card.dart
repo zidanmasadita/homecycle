@@ -129,7 +129,6 @@ class NotificationCard extends StatelessWidget {
               style: TextStyle(
                 color: AppColors.primary,
                 fontWeight: FontWeight.bold,
-                fontSize: 14,
               ),
             ),
           ),

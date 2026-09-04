@@ -3,7 +3,10 @@ import 'package:provider/provider.dart';
 import 'package:homesikil/core/constants/app_colors.dart';
 import 'package:homesikil/core/theme/app_text_styles.dart';
 import 'package:homesikil/routes/app_routes.dart';
-import 'package:homesikil/core/utils/app_snackbar.dart';
+import 'package:homesikil/core/utils/app_helpers.dart';
+import 'package:homesikil/core/routes/slide_page_route.dart';
+import 'package:homesikil/core/widgets/detail_row_widget.dart';
+import 'package:homesikil/core/widgets/success_animation_screen.dart';
 import 'package:homesikil/features/scan/provider/scan_provider.dart';
 import 'package:homesikil/features/category/provider/category_provider.dart';
 import 'package:homesikil/features/category/models/category_model.dart';
@@ -124,29 +127,28 @@ class _ScanResultScreenState extends State<ScanResultScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        _buildDetailRow(
-                          Icons.restaurant,
-                          'scan.food_name'.tr(),
-                          capitalizedName,
+                        DetailRowWidget(
+                          icon: Icons.restaurant,
+                          label: 'scan.food_name'.tr(),
+                          value: capitalizedName,
                         ),
                         const SizedBox(height: 16),
-                        _buildDetailRow(
-                          Icons.eco,
-                          'scan.freshness'.tr(),
-                          'scan.fresh_confidence'.tr(args: [confidencePercent]),
+                        DetailRowWidget(
+                          icon: Icons.eco,
+                          label: 'scan.freshness'.tr(),
+                          value: 'scan.fresh_confidence'.tr(args: [confidencePercent]),
                           color: Colors.green,
                         ),
                         const SizedBox(height: 16),
-                        _buildDetailRow(
-                          Icons.calendar_today,
-                          'scan.estimated_expiry'.tr(),
-                          'scan.days'.tr(args: [expirationDays.toString()]),
+                        DetailRowWidget(
+                          icon: Icons.calendar_today,
+                          label: 'scan.estimated_expiry'.tr(),
+                          value: 'scan.days'.tr(args: [expirationDays.toString()]),
                         ),
                         const SizedBox(height: 16),
-                        _buildDetailRow(
-                          Icons.shopping_basket,
-                          'scan.quantity'.tr(),
-                          '',
+                        DetailRowWidget(
+                          icon: Icons.shopping_basket,
+                          label: 'scan.quantity'.tr(),
                           trailing: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
@@ -163,7 +165,9 @@ class _ScanResultScreenState extends State<ScanResultScreen> {
                               ),
                               const SizedBox(width: 12),
                               Text(
-                                'scan.pcs'.tr(args: [_quantity.toInt().toString()]),
+                                'scan.pcs'.tr(
+                                  args: [_quantity.toInt().toString()],
+                                ),
                                 style: AppTextStyles.title.copyWith(
                                   fontSize: 16,
                                   color: Colors.black87,
@@ -183,33 +187,38 @@ class _ScanResultScreenState extends State<ScanResultScreen> {
                           ),
                         ),
                         const SizedBox(height: 16),
-                        _buildDetailRow(
-                          Icons.category, 
-                          'scan.category'.tr(), 
-                          category.type.isNotEmpty && category.type != 'scan.unknown'.tr().toLowerCase()
+                        DetailRowWidget(
+                          icon: Icons.category,
+                          label: 'scan.category'.tr(),
+                          value: category.type.isNotEmpty &&
+                                  category.type !=
+                                      'scan.unknown'.tr().toLowerCase()
                               ? '${category.type[0].toUpperCase()}${category.type.substring(1)}'
-                              : 'scan.unknown'.tr()
+                              : 'scan.unknown'.tr(),
                         ),
-                        
+
                         const SizedBox(height: 24),
                         const Divider(),
                         const SizedBox(height: 16),
-                        
+
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Row(
                               children: [
                                 Icon(
-                                  Icons.kitchen, 
-                                  color: _storeInFridge ? AppColors.primary : Colors.grey,
+                                  Icons.kitchen,
+                                  color: _storeInFridge
+                                      ? AppColors.primary
+                                      : Colors.grey,
                                 ),
                                 const SizedBox(width: 12),
                                 Text(
                                   'scan.store_in_fridge'.tr(),
-                                  style: const TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500,
+                                  style: AppTextStyles.body1Medium.copyWith(
+                                    color: _storeInFridge
+                                        ? AppColors.primary
+                                        : Colors.black87,
                                   ),
                                 ),
                               ],
@@ -225,26 +234,32 @@ class _ScanResultScreenState extends State<ScanResultScreen> {
                             ),
                           ],
                         ),
-                        if (category.storageTip != null && category.storageTip!.isNotEmpty) ...[
+                        if (category.storageTip != null &&
+                            category.storageTip!.isNotEmpty) ...[
                           const SizedBox(height: 16),
                           Container(
                             padding: const EdgeInsets.all(12),
                             decoration: BoxDecoration(
                               color: Colors.blue.withValues(alpha: 0.05),
                               borderRadius: BorderRadius.circular(12),
-                              border: Border.all(color: Colors.blue.withValues(alpha: 0.1)),
+                              border: Border.all(
+                                color: Colors.blue.withValues(alpha: 0.1),
+                              ),
                             ),
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Icon(Icons.lightbulb_outline, color: Colors.blue, size: 20),
+                                const Icon(
+                                  Icons.lightbulb_outline,
+                                  color: Colors.blue,
+                                  size: 20,
+                                ),
                                 const SizedBox(width: 8),
                                 Expanded(
                                   child: Text(
                                     category.storageTip!,
-                                    style: const TextStyle(
+                                    style: AppTextStyles.label1Regular.copyWith(
                                       color: Colors.blue,
-                                      fontSize: 13,
                                       height: 1.4,
                                     ),
                                   ),
@@ -252,7 +267,7 @@ class _ScanResultScreenState extends State<ScanResultScreen> {
                               ],
                             ),
                           ),
-                        ]
+                        ],
                       ],
                     ),
                   ),
@@ -310,7 +325,9 @@ class _ScanResultScreenState extends State<ScanResultScreen> {
                                 confidenceScore: result.confidenceScore,
                                 quantity: _quantity,
                                 unit: 'pcs',
-                                storageLocation: _storeInFridge ? 'fridge' : 'room_temp',
+                                storageLocation: _storeInFridge
+                                    ? 'fridge'
+                                    : 'room_temp',
                                 scannedAt: DateTime.now(),
                                 estimatedExpiredDate: DateTime.now().add(
                                   Duration(days: expirationDays),
@@ -322,23 +339,33 @@ class _ScanResultScreenState extends State<ScanResultScreen> {
 
                               final success = await context
                                   .read<ScanProvider>()
-                                  .confirmAndSave(
-                                    item: item,
-                                    adminId: ownerId,
-                                  );
+                                  .confirmAndSave(item: item, adminId: ownerId);
 
                               if (success && context.mounted) {
-                                Navigator.pushNamedAndRemoveUntil(
+                                Navigator.push(
                                   context,
-                                  AppRoutes.dashboard,
-                                  (route) => false,
-                                  arguments: {'index': 1},
-                                );
-                                AppSnackbar.showSuccess(
-                                  'scan.save_success'.tr(),
+                                  SlidePageRoute(
+                                    direction: SlideDirection.bottomToTop,
+                                    page: SuccessAnimationScreen(
+                                      title: 'Yeay, Berhasil!',
+                                      subtitle:
+                                          '$capitalizedName telah ditambahkan ke inventory.',
+                                      durationInSeconds: 3,
+                                      redirectMessageTemplate:
+                                          'Akan diarahkan ke inventory dalam {time} detik',
+                                      onComplete: () {
+                                        Navigator.pushNamedAndRemoveUntil(
+                                          context,
+                                          AppRoutes.dashboard,
+                                          (route) => false,
+                                          arguments: {'index': 1},
+                                        );
+                                      },
+                                    ),
+                                  ),
                                 );
                               } else if (context.mounted) {
-                                AppSnackbar.showError(
+                                AppHelpers.showError(
                                   scanProvider.errorMessage ??
                                       'scan.save_failed'.tr(),
                                 );
@@ -355,10 +382,8 @@ class _ScanResultScreenState extends State<ScanResultScreen> {
                           ? const CircularProgressIndicator(color: Colors.white)
                           : Text(
                               'scan.save_to_inventory'.tr(),
-                              style: const TextStyle(
+                              style: AppTextStyles.body1Bold.copyWith(
                                 color: Colors.white,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
                               ),
                             ),
                     ),
@@ -383,10 +408,8 @@ class _ScanResultScreenState extends State<ScanResultScreen> {
                       ),
                       child: Text(
                         'scan.scan_again'.tr(),
-                        style: const TextStyle(
+                        style: AppTextStyles.body1Bold.copyWith(
                           color: AppColors.primary,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
@@ -397,41 +420,6 @@ class _ScanResultScreenState extends State<ScanResultScreen> {
           ),
         ],
       ),
-    );
-  }
-
-  Widget _buildDetailRow(
-    IconData icon,
-    String label,
-    String value, {
-    Color? color,
-    Widget? trailing,
-  }) {
-    return Row(
-      children: [
-        Container(
-          padding: const EdgeInsets.all(8),
-          decoration: BoxDecoration(
-            color: (color ?? AppColors.primary).withValues(alpha: 0.1),
-            shape: BoxShape.circle,
-          ),
-          child: Icon(icon, color: color ?? AppColors.primary, size: 20),
-        ),
-        const SizedBox(width: 12),
-        Text(
-          label,
-          style: AppTextStyles.bodyMedium.copyWith(color: Colors.grey.shade600),
-        ),
-        const Spacer(),
-        trailing ??
-            Text(
-              value,
-              style: AppTextStyles.title.copyWith(
-                fontSize: 16,
-                color: Colors.black87,
-              ),
-            ),
-      ],
     );
   }
 }

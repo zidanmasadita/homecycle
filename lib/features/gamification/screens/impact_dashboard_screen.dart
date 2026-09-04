@@ -56,10 +56,7 @@ class _ImpactDashboardScreenState extends State<ImpactDashboardScreen> {
         automaticallyImplyLeading: false,
         title: Text(
           'gamification.your_impact'.tr(),
-          style: AppTextStyles.heading.copyWith(
-            fontSize: 22,
-            color: Colors.black87,
-          ),
+          style: AppTextStyles.title2Bold.copyWith(color: Colors.black87),
         ),
         centerTitle: true,
       ),
@@ -121,8 +118,7 @@ class _ImpactDashboardScreenState extends State<ImpactDashboardScreen> {
                           children: [
                             Text(
                               hasExpiredItems ? 'gamification.oh_no'.tr() : 'gamification.great_job'.tr(),
-                              style: AppTextStyles.heading.copyWith(
-                                fontSize: 20,
+                              style: AppTextStyles.title3Bold.copyWith(
                                 color: hasExpiredItems ? Colors.red.shade700 : AppColors.primary,
                               ),
                             ),
@@ -131,7 +127,7 @@ class _ImpactDashboardScreenState extends State<ImpactDashboardScreen> {
                               hasExpiredItems 
                                 ? 'gamification.expired_items_msg'.tr(args: [expiredItems.length.toString()])
                                 : 'gamification.rescued_items_msg'.tr(args: [impactStats.itemsSaved.toString(), moneySaved.toStringAsFixed(0), co2Saved.toStringAsFixed(1)]),
-                              style: AppTextStyles.bodyMedium.copyWith(
+                              style: AppTextStyles.body2Regular.copyWith(
                                 color: Colors.grey.shade800,
                                 height: 1.4,
                               ),
@@ -202,7 +198,7 @@ class _ImpactDashboardScreenState extends State<ImpactDashboardScreen> {
                     children: [
                       Text(
                         'gamification.achievements'.tr(),
-                        style: AppTextStyles.heading.copyWith(fontSize: 18),
+                        style: AppTextStyles.title3Bold,
                       ),
                       const SizedBox(height: 16),
                       if (gamification.status == GamificationStatus.loading)
@@ -211,7 +207,7 @@ class _ImpactDashboardScreenState extends State<ImpactDashboardScreen> {
                         Center(
                           child: Text(
                             'gamification.no_achievements'.tr(),
-                            style: AppTextStyles.bodyMedium.copyWith(
+                            style: AppTextStyles.body2Regular.copyWith(
                               color: Colors.grey.shade500,
                             ),
                           ),
@@ -265,9 +261,7 @@ class _ImpactDashboardScreenState extends State<ImpactDashboardScreen> {
                                   _showAllAchievements
                                       ? 'gamification.show_less'.tr()
                                       : 'gamification.show_all_achievements'.tr(),
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                  style: AppTextStyles.body1Bold,
                                 ),
                                 const SizedBox(width: 8),
                                 Icon(
@@ -321,8 +315,7 @@ class _ImpactDashboardScreenState extends State<ImpactDashboardScreen> {
                               gamification.currentStreakWeeks > 0
                                   ? 'gamification.keep_it_up'.tr()
                                   : 'gamification.rescue_more_often'.tr(),
-                              style: AppTextStyles.title.copyWith(
-                                fontSize: 16,
+                              style: AppTextStyles.body1SemiBold.copyWith(
                                 color: gamification.currentStreakWeeks > 0
                                     ? Colors.orange.shade900
                                     : Colors.red.shade900,
@@ -333,7 +326,7 @@ class _ImpactDashboardScreenState extends State<ImpactDashboardScreen> {
                               gamification.currentStreakWeeks > 0
                                   ? 'gamification.great_streak_msg'.tr()
                                   : 'gamification.no_recent_rescue_msg'.tr(),
-                              style: AppTextStyles.bodyMedium.copyWith(
+                              style: AppTextStyles.body2Regular.copyWith(
                                 color: gamification.currentStreakWeeks > 0
                                     ? Colors.orange.shade800
                                     : Colors.red.shade800,

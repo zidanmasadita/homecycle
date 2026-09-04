@@ -51,6 +51,7 @@ dependencies:
   firebase_core: ^4.12.1
   firebase_messaging: ^16.4.3
   image_picker: ^1.2.3
+  lottie: ^3.5.1
 dev_dependencies:
   flutter_test:
     sdk: flutter
